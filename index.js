@@ -30,14 +30,15 @@ newData.save(function(err,results){
 if (err) {
   console.log(err);
 }else if (results) {
-  data.findAll({regis: results}),
+  Regisdata.find({},function (err, results) {
+    console.log(results);
+    res.render("form",{regNums:results});
+  });
 }
-else {
-  return results;
-}
+// else {
+//   return results;
+// }
 });
-
-res.render("form",{regNums:regInp});
 
 });
 
