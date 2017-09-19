@@ -15,7 +15,7 @@ var UserSchema = mongoose.Schema({
     regis: String,
 
 
-});
+   });
 
 
 
