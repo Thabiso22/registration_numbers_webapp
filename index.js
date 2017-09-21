@@ -22,30 +22,34 @@ app.set('view engine', 'handlebars');
 
 // //get route
 app.get('/', function(req, res) {
-    res.render('form');
+  Regisdata.find({}, function(err, results) {
+    console.log(results);
+    res.render("form", {regNums: results});
+  });
+    //res.render('form');
 });
-
-app.post("/", function(req, res) {
-    var regInp = req.body.textbox;
-    //var storeRegNum = [];
+app.post("/register", function(req, res) {
+     var regInp = req.body.textbox;
     var newData = new Regisdata({
         regis: regInp
     });
     newData.save(function(err, results) {
         if (err) {
             console.log(err);
-        } else if (results) {
-            Regisdata.find({}, function(err, results) {
-                console.log(results);
-                res.render("form", {
-                    regNums: results
-                });
-            });
         }
-
+        else {
+          res.redirect("/");
+        }
     });
-
 });
+app.post("/", function(req, res) {
+        var radios = req.body.regisButt;
+        // console.log(radios);
+        Regisdata.find({regis: {$regex: radios}}, function(err, results) {
+          console.log(results);
+          res.render("form", {regNums: results});
+        });
+    });
 
 
 

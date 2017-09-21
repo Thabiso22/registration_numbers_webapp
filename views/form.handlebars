@@ -1,12 +1,23 @@
+<!--Textbox form  -->
 <center>
-    <form action="/" method="Post">
+    <form action="/register" method="Post">
         <input type="text" id="textbox" placeholder="Type in reg..." name="textbox" required></input><br><br>
-        <label>Malmesbury<input type="radio" name="regisButt" value="Malmesbury"></label>
-        <label>Bellville<input type="radio" name="regisButt" value="Bellville"></label>
-        <label>Cape Town<input type="radio" name="regisButt" value="Cape Town"></label><br><br>
-        <input type="submit" id="button" value="Add"</input>
+
+        <input type="submit" id="button" value="Add"</input><br><br>
         </form>
-        {{#each regNums}}
-        <div id="display">{{this.regis}}</div><br><br>
-        {{/each}}
+
 </center>
+
+
+<!--Radio buttons form  -->
+
+<form class="" action="/" method="Post">
+
+  <label>Malmesbury<input type="radio" name="regisButt" value="CK"></label>
+  <label>Bellville<input type="radio" name="regisButt" value="CY"></label>
+  <label>Cape Town<input type="radio" name="regisButt" value="CA"></label><br><br>
+<input type="submit" id="button" value="selected"</input>
+</form>
+{{#each regNums}}
+<div id="display">{{this.regis}}</div><br><br>
+{{/each}}
